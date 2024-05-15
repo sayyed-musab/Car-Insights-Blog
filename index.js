@@ -4,9 +4,10 @@ const port = 3000
 const app = Express()
 
 app.set('view engine', 'ejs')
+app.use(Express.static('public'))
 
 app.get('/', (req, res)=>{
-    res.send('Hello World!')
+    res.render('index')
 })
 
 app.listen(port, ()=>{
