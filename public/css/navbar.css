@@ -11,22 +11,6 @@ nav>*{
     margin: 1em 0.5em;
 }
 
-#nav-left>a{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    color: var(--clr-2);
-    font-weight: bolder;
-    font-size: 1.2em;
-    text-decoration: none;
-}
-
-#nav-left>a>.logo{
-    width: 25px;
-
-}
-
 /* Nav Links */
 #navItems{
     display: flex;
@@ -46,7 +30,7 @@ nav>*{
     color: var(--clr-1);
     font-weight: 600;
     padding:0.5em 1.5em;
-    border-radius: 8px;
+    border-radius: 5px;
 }
 
 .navItem:last-child>a:hover{

@@ -1,16 +1,16 @@
 <header>
     <nav id="nav">
         <div id="nav-left">
-            <a href="/">
+            <a href="/" class="logo-link">
                 <img src="images/logo.svg" alt="Car Insights Logo" class="logo">
-                <div class="text">CarInsights</div>
+                <div class="logo-text">CarInsights</div>
             </a>
         </div>
         <div id="nav-right">
             <ul id="navItems">
-                <li class="navItem active"><a href="/">Home</a></li>
-                <li class="navItem"><a href="/blogs">Blogs</a></li>
-                <li class="navItem"><a href="/contact">About</a></li>
+                <li class="navItem <%=homeActive%>"><a href="/">Home</a></li>
+                <li class="navItem <%=blogsActive%>"><a href="/blogs">Blogs</a></li>
+                <li class="navItem <%=contactActive%>"><a href="/contact">About</a></li>
                 <li class="navItem"><a href="#newsletter">Subscribe</a></li>
             </ul>
         </div>
