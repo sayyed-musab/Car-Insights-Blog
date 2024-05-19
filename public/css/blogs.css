@@ -1,0 +1,149 @@
+#main{
+    background-color: var(--clr-3);
+    color: white;
+    padding: 2em 2em;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#main-heading{
+    margin-top: 1em;
+    font-size: 2.5em;
+    font-weight: 600;
+}
+
+.heading-line{
+    margin-top: 0.2em;
+}
+
+#text{
+    margin: 2.5em 0;
+    width: 70%;
+    text-align: justify;
+    margin-bottom: 1.5em;
+}
+
+#main>.subscribe-btn{
+    margin-bottom: 1.5em;
+}
+
+/* Blogs Sections */
+#blogs{
+    padding: 3em;
+}
+
+#blog-heading{
+    font-size: 2.5em;
+    padding: 0.5em 0;
+    border-bottom: 0.5px solid var(--clr-1);
+    width: 4em;
+}
+
+#blogs-container{
+    margin: 2em 0;    
+}
+
+.blog{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2.5em auto;
+    gap: 30px;
+}
+
+.left>img{
+    width: 15em;
+}
+
+.right{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--clr-1);
+}
+
+.title{
+    font-size: 1.5em;
+    color: black;
+}
+
+.details-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.author-date>span, .read-time{
+    color: var(--clr-2);
+}
+
+@media screen and (max-width: 1080px){
+    #main{
+        flex-direction: column;
+    }
+
+    #main-images-container>img{
+        width: 540px;
+    }
+}
+
+@media screen and (max-width: 820px){
+    .right{
+        font-size: 0.8em;
+    }
+    .title{
+        font-size: 1.2em;
+    }
+
+    #text{
+        width: 60%;
+    }
+
+    .left>img{
+        width: 15em;
+    }
+}
+
+@media screen and (max-width: 680px){
+    .description{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 620px){
+    #text{
+        width: 70%;
+    }
+
+    #main-images-container>img{
+        width: 340px;
+    }
+
+    .left>img{
+        width: 12em;
+    }
+}
+
+@media screen and (max-width: 490px){
+    #main-heading{
+        font-size: 1.5em;
+    }
+
+    #text{
+        width: 90%;
+    }
+
+    #main-images-container>img{
+        width: 90vw;
+    }
+
+    .blog{
+        flex-direction: column;
+    }
+
+    .left>img{
+        width: 250px;
+    }
+}
