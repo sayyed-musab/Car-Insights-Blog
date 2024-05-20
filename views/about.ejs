@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | CarInsights</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link href="/css/utility.css" rel="stylesheet">
+    <link href="/css/navbar.css" rel="stylesheet">
+    <link href="/css/footer.css" rel="stylesheet">
+    <link href="/css/about.css" rel="stylesheet">
+</head>
+<body>
+    <%- include('navbar', {homeActive: "", blogsActive: "", aboutActive:"active"}) %>
+    <main>
+        <section id="about">
+            <h2 id="about-heading">About CarInsights</h2>
+            <h4>Welcome to CarInsights!</h4>
+            <p>At CarInsights, we are passionate about everything automotive. Our mission is to provide car enthusiasts, potential buyers, and everyday drivers with insightful, reliable, and engaging content about the world of cars. Whether you are looking for the latest news, in-depth reviews, or handy maintenance tips, we’ve got you covered.</p>
+            <h4>Who We Are</h4>
+            <p>CarInsights was founded by a group of automotive aficionados who saw the need for a comprehensive, user-friendly platform dedicated to car-related content. Our team comprises experienced writers, industry experts, and car lovers who share a common goal: to keep you informed and entertained.</p>
+            <h4>What We Offer</h4>
+            <ul>
+                <li><span>Latest News:</span>Stay up-to-date with the latest happenings in the automotive industry. From new car releases and technology advancements to industry trends and regulations, we bring you the news that matters.</li>
+                <li><span>In-Depth Reviews:</span>Making a car purchase decision can be daunting. Our detailed reviews cover everything you need to know about the latest models, including performance, safety, features, and value for money.</li>
+                <li><span>Maintenance Tips:</span>Keep your car running smoothly with our expert maintenance tips. We provide practical advice on routine maintenance, troubleshooting common issues, and ensuring your vehicle’s longevity.</li>
+                <li><span>Car Modifications:</span>Interested in personalizing your car? Explore our articles on car modifications, where we discuss the best upgrades and enhancements to improve your vehicle’s performance and aesthetics.</li>
+                <li><span>Driving Tips:</span>Enhance your driving skills with our useful driving tips. Whether you are a new driver or a seasoned pro, our tips will help you drive safer and smarter.</li>
+            </ul>
+            <h4>Our Vision</h4>
+            <p>We believe that an informed driver is a better driver. Our vision is to be the go-to resource for all things automotive, fostering a community of well-informed and enthusiastic car owners. We strive to create content that is not only informative but also inspiring and enjoyable to read.</p>
+            <h4>Join Our Community</h4>
+            <p>CarInsights is more than just a blog; it’s a community. We encourage our readers to engage with us through comments, social media, and our newsletter. Share your thoughts, ask questions, and be part of a growing community of car enthusiasts.</p>
+            <p>Thank you for visiting CarInsights. We hope you enjoy our content and find it useful. If you have any suggestions or feedback, please feel free to contact us. Your input helps us to continually improve and serve you better.</p>
+            <p>Happy driving!</p>
+            <p>The CarInsights Team</p>
+        </section>
+    </main>
+    <%- include('footer') %>
+</body>
+<script src="js/hamburger.js"></script>
+</html>

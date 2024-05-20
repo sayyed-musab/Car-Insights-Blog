@@ -1,0 +1,33 @@
+#about{
+    width: 80%;
+    margin: 1em auto;
+    text-align: justify;
+}
+
+#about>*{
+    margin: 1em auto;
+}
+
+#about>h4{
+    font-weight: 600;
+    margin-top: 2em;
+}
+
+#about>ul{
+    margin-left: 1em;
+}
+
+li{
+    margin: 0.5em auto;
+}
+
+li>span{
+    font-weight:700;
+    margin-right: 5px;
+}
+
+@media screen and (max-width: 600px){
+    #about{
+        width: 90%;
+    }
+}
