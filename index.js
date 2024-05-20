@@ -14,6 +14,10 @@ app.get('/blogs', (req, res)=>{
     res.render('blogs')
 })
 
+app.get('/blogpost', (req, res)=>{
+    res.render('blogpost')
+})
+
 app.listen(port, ()=>{
     console.log(`App is listening at localhost:${port}`)
 })
