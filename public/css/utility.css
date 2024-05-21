@@ -11,6 +11,7 @@
     --clr-1: #232536;
     --clr-2: #FF5959;
     --clr-3: #2b2c3d;
+    --clr-err: #ff0000;
 }
 
 .btn{
@@ -48,4 +49,15 @@
 
 .logo{
     width: 25px;
+}
+
+.disabled-btn{
+    background-color: grey;
+    color: white;
+    border: none;
+}
+
+.disabled-btn:hover{
+    background-color: grey;
+    color: white;
 }

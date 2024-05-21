@@ -22,6 +22,9 @@ app.get('/about', (req, res)=>{
     res.render('about')
 })
 
+app.get('/login', (req, res)=>{
+    res.render('login')
+})
 
 app.listen(port, ()=>{
     console.log(`App is listening at localhost:${port}`)
