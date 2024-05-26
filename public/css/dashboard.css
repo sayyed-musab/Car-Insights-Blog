@@ -1,0 +1,137 @@
+/* Header */
+#header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+    position: sticky;
+    top: 0;
+    background-color: var(--clr-1);
+    color: white;
+}
+
+#header-left{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#filter-container>select, #sort-container>select{
+    padding: 0.5em 1em;
+    font-size: 1em;
+}
+  
+#header-center>input{
+    padding: 0.5em 1em;
+    font-size: 1em;
+}
+
+/* Blogs */
+#blogs{
+    padding: 0 3em;
+    display: flex;
+    flex-direction: column;
+}
+
+#blog-heading{
+    font-size: 2.5em;
+    padding: 0.5em 0;
+    border-bottom: 0.5px solid var(--clr-1);
+    width: 4em;
+}
+
+#blogs-container{
+    margin: 2em 0;    
+}
+
+.blog{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1em auto;
+    gap: 30px;
+    padding: 1em;
+} 
+
+.blog-left>img{
+    width: 15em;
+}
+
+.blog-right{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--clr-1);
+}
+
+.title{
+    font-size: 1.5em;
+    color: black;
+}
+
+.details-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.author-date>span, .read-time{
+    color: var(--clr-2);
+}
+
+.btn-container{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.private{
+    background-color: #dbdbdb;
+    border-radius: 8px;
+}
+@media screen and (max-width: 840px){
+    #header{
+        font-size: 0.9em;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-content: center;
+        justify-content: center;
+    }
+    .blog-right{
+        font-size: 0.8em;
+    }
+    .title{
+        font-size: 1.2em;
+    }
+    .blog-left>img{
+        width: 15em;
+    }
+}
+
+@media screen and (max-width: 680px){
+    .description{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 620px){
+    .blog-left>img{
+        width: 12em;
+    }
+}
+
+@media screen and (max-width: 490px){
+    .blog{
+        flex-direction: column;
+    }
+
+    .blog-left>img{
+        width: 250px;
+    }
+
+    .btn-container{
+        margin-top: 0.5em;
+        justify-content: space-between;
+    }
+}
