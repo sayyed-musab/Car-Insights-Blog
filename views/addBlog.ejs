@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Add Blog | CarInsights</title>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" /></head>
+    <link href="/css/utility.css" rel="stylesheet">
+    <link href="/css/addBlog.css" rel="stylesheet">
+<body>
+    <main>
+        <section id="addBlog">
+            <div id="addBlog-heading">Add Blog</div>
+            <form>
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" placeholder="Blog Title" id="title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="author">Author</label>
+                    <select name="author" id="author">
+                        <option value="Dasteen">Dasteen</option>
+                        <option value="John">John</option>
+                    </select> 
+                </div>
+                
+                <div class="form-group">
+                    <label for="visibility">Visibility</label>
+                    <select name="visibility" id="visibility">
+                        <option value="Private" selected>Private</option>
+                        <option value="Public">Public</option>
+                    </select> 
+                </div>
+                
+                <img id="previewImage">
+                <div class="form-group">
+                    <label for="coverImg">Upload Cover Image</label>
+                    <input type="file" name="coverImg" id="coverImg" accept="image/png, image/gif, image/jpeg" required>
+                </div>
+        
+                <!-- Blog -->
+                <div id="editor">
+                </div>
+
+                <input type="submit" class="btn" value="Save Blog">
+            </form>
+        </section>
+    </main>
+</body>
+<!-- Include the Quill library -->
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+<script src="js/addBlog.js"></script>
+</html>

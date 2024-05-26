@@ -1,0 +1,65 @@
+#addBlog{
+    width: 80vw;
+    margin: 1em auto;
+}
+
+#addBlog-heading{
+    font-size: 1.5em;
+    width: 6em;
+    margin: 0.5em 0;
+    padding: 0.5em 0;
+    color: var(--clr-1);
+    border-bottom: 2px solid var(--clr-2);
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
+}
+
+form>*{
+    margin: 20px 0;
+}
+
+.form-group{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+select, input{
+    align-self: flex-start;
+    padding: 0.2em 1em;
+}
+
+#title{
+    width: 80%;
+}
+
+input[type="submit"]{
+    align-self: flex-end;
+}
+
+#previewImage {
+    align-self: flex-start;
+    max-width: 100%;
+    border: 2px solid var(--clr-2);
+    border-radius: 8px;
+    padding: 0.2em;
+}
+
+.ql-toolbar{
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 720px){
+    #addBlog{
+        width: 90vw;
+        font-size: 0.8em;
+    }
+
+    form>*{
+        margin: 15px 0;
+    }
+} 
