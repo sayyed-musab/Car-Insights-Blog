@@ -1,37 +1,21 @@
-import Express from "express"
+import express from "express"
+import blog from "./routes/blogs.js"
+import admin from "./routes/admin.js"
 
 const port = 3000
-const app = Express()
+const app = express()
 
 app.set('view engine', 'ejs')
-app.use(Express.static('public'))
+app.use(express.static('public'))
+app.use('/blogs', blog)
+app.use('/admin', admin)
 
 app.get('/', (req, res)=>{
     res.render('index')
 })
 
-app.get('/blogs', (req, res)=>{
-    res.render('blogs')
-})
-
-app.get('/blogpost', (req, res)=>{
-    res.render('blogpost')
-})
-
 app.get('/about', (req, res)=>{
     res.render('about')
-})
-
-app.get('/login', (req, res)=>{
-    res.render('login')
-})
-
-app.get('/dashboard', (req, res)=>{
-    res.render('dashboard')
-})
-
-app.get('/addBlog', (req, res)=>{
-    res.render('addBlog')
 })
 
 app.listen(port, ()=>{
