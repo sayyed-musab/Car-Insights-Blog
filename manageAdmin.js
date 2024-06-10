@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 import Admin from "./models/admin.js"
-import bcrypt from "bcryptjs"
+import bcrypt from "bcrypt"
 
 mongoose.connect(process.env.MONGO_URI)
 
@@ -42,7 +42,7 @@ const deleteAdmin = async (username, password) =>{
         }
         
         // Check if password is correct
-        const isPwdCorrect = await bcrypt.compare(password, admin.password)
+        const isPwdCorrect = bcrypt.compare(password, admin.password)
         if(!isPwdCorrect){
             throw new Error("Wrong Password")
         }
@@ -55,4 +55,3 @@ const deleteAdmin = async (username, password) =>{
         console.error('Error deleting admin:', error.message);
     }
 }
-

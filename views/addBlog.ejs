@@ -10,6 +10,9 @@
     <link href="/css/addBlog.css" rel="stylesheet">
 <body>
     <main>
+        <section id="logout">
+            <button class="btn" id="logout-btn" onclick="localStorage.removeItem('auth'); location='/'">Logout</button>
+        </section>
         <section id="addBlog">
             <div id="addBlog-heading">Add Blog</div>
             <form>
@@ -52,4 +55,5 @@
 <!-- Include the Quill library -->
 <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
 <script src="js/addBlog.js"></script>
+<script src="js/adminAuth.js"></script>
 </html>

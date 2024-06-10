@@ -26,6 +26,14 @@
     font-size: 1em;
 }
 
+#header-right{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items:center;
+    justify-content:center;
+}
+
 /* Blogs */
 #blogs{
     padding: 0 3em;

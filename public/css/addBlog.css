@@ -1,3 +1,9 @@
+#logout{
+    position: absolute;
+    right: 20px;
+    font-size: 1em;
+}
+
 #addBlog{
     width: 80vw;
     margin: 1em auto;
@@ -54,7 +60,7 @@ input[type="submit"]{
 }
 
 @media screen and (max-width: 720px){
-    #addBlog{
+    main{
         width: 90vw;
         font-size: 0.8em;
     }

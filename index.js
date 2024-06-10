@@ -1,6 +1,9 @@
 import express from "express"
 import blog from "./routes/blogs.js"
 import admin from "./routes/admin.js"
+import mongoose from "mongoose"
+
+mongoose.connect(process.env.MONGO_URI)
 
 const port = 3000
 const app = express()

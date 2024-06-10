@@ -64,10 +64,10 @@ input[type="submit"]{
     align-self: flex-end;
 }
 
-.error{
+#err-msg{
     color: var(--clr-err);
-    font-size:0.9em;
     display: none;
+    margin-bottom: 1em;
 }
 
 @media screen and (max-width: 850px){

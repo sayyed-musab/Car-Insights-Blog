@@ -32,7 +32,8 @@
                 <input type="text" name="search" id="search" placeholder="🔍 Search">
             </div>
             <div id="header-right">
-                <button class="btn btn-link-inside"><a href="/addBlog" target="_blank">Add Blog</a></button>
+                <button class="btn btn-link-inside"><a href="/admin/addBlog" target="_blank">Add Blog</a></button>
+                <button class="btn" id="logout-btn" onclick="localStorage.removeItem('auth'); location='/'">Logout</button>
             </div>
         </section>
         <section id="blogs">
@@ -100,4 +101,5 @@
     </main>
 </body>
 <script src="js/dashboard.js"></script>
+<script src="js/adminAuth.js"></script>
 </html>
