@@ -43,4 +43,68 @@ const quill = new Quill('#editor', {
     modules:{
         toolbar: toolbarOptions
     }
-});
+})
+
+// Send Blog to Backend
+const title = document.getElementById('title')
+const author = document.getElementById('author')
+const visibility = document.getElementById('visibility')
+const coverImg = document.getElementById('coverImg')
+const addBlogSubmitBtn = document.getElementById('addBlog-submit-btn')
+
+function checkConditions() {
+    if (title.value.length < 5 || author.value.trim() === "" || visibility.value.trim() === "" || coverImg.value.trim() === "") {
+        addBlogSubmitBtn.disabled = true;
+    } else {
+        addBlogSubmitBtn.disabled = false;
+    }
+}
+
+// Add event listeners to all input elements
+title.addEventListener('change', checkConditions);
+author.addEventListener('change', checkConditions);
+visibility.addEventListener('change', checkConditions);
+coverImg.addEventListener('change', checkConditions);
+
+// Initial check in case the form is pre-filled
+checkConditions();
+
+let queryImage;
+setImagePath = () => {
+    let reader = new FileReader() 
+    reader.readAsDataURL(coverImg.files[0])
+    reader.onload = () => {      
+        queryImage =  reader.result      
+    }
+}
+
+addBlogSubmitBtn.addEventListener('click', async(e)=>{
+    e.preventDefault()
+    setImagePath()
+    if(queryImage != undefined){
+        let response = await fetch('http://localhost:3000/admin/addBlog', {
+            method: "POST", 
+            headers:{
+                "content-type": "application/json"
+            },
+            body:JSON.stringify({
+                authToken: localStorage.getItem('auth'),
+                title: title.value,
+                author: author.value,
+                visibility: visibility.value,
+                coverImg: queryImage,
+                blogBody: quill.root.innerHTML
+            })
+        })
+
+        let res = await response.json()
+        if(res.err){
+            document.getElementById('err').innerText = res
+        }
+        else if(res.msg == "saved"){
+            location = "/admin"
+        }
+    }
+})
+
+

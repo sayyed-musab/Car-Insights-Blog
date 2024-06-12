@@ -59,6 +59,10 @@ input[type="submit"]{
     margin-bottom: 0;
 }
 
+#err{
+    color: var(--clr-err);
+}
+
 @media screen and (max-width: 720px){
     main{
         width: 90vw;

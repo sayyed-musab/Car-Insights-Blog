@@ -1,12 +1,13 @@
 import express from "express"
-import Admin from "../models/admin.js"
+import Admin from "../models/Admin.js"
+import Blog from "../models/Blog.js"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 
 const admin = express.Router()
 
 admin.use(express.static('public'))
-admin.use(express.json())
+admin.use(express.json({limit: '10mb'}))
 
 admin.get('/', (req, res)=>{
     res.render('dashboard') 
@@ -51,6 +52,17 @@ admin.post('/adminAuth', async(req, res)=>{
 
 admin.get('/addBlog', (req, res)=>{
     res.render('addBlog')
+})
+
+admin.post('/addBlog', (req, res)=>{
+    const {title, author, visibility, coverImg, blogBody} = req.body
+    try {
+        let blog = new Blog({title, author, visibility, coverImg, blogBody})
+        blog.save()
+        res.json({msg: "saved"})
+    } catch (err) {
+        res.json({err})
+    }
 })
 
 export default admin

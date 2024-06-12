@@ -15,10 +15,11 @@
         </section>
         <section id="addBlog">
             <div id="addBlog-heading">Add Blog</div>
-            <form>
+            <form enctype="multipart/form-data">
+
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" name="title" placeholder="Blog Title" id="title" required>
+                    <input type="text" name="title" placeholder="Blog Title" id="title">
                 </div>
                 
                 <div class="form-group">
@@ -40,15 +41,16 @@
                 <img id="previewImage">
                 <div class="form-group">
                     <label for="coverImg">Upload Cover Image</label>
-                    <input type="file" name="coverImg" id="coverImg" accept="image/png, image/gif, image/jpeg" required>
+                    <input type="file" name="coverImg" id="coverImg" accept="image/png, image/gif, image/jpeg">
                 </div>
         
                 <!-- Blog -->
                 <div id="editor">
                 </div>
 
-                <input type="submit" class="btn" value="Save Blog">
+                <input type="submit" id="addBlog-submit-btn" class="btn" value="Save Blog">
             </form>
+            <div id="err"></div>
         </section>
     </main>
 </body>

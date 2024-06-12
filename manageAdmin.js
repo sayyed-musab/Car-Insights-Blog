@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import Admin from "./models/admin.js"
+import Admin from "./models/Admin.js"
 import bcrypt from "bcrypt"
 
 mongoose.connect(process.env.MONGO_URI)
