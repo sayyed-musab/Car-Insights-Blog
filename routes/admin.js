@@ -55,9 +55,12 @@ admin.get('/addBlog', (req, res)=>{
 })
 
 admin.post('/addBlog', (req, res)=>{
-    const {title, author, visibility, coverImg, blogBody} = req.body
+    let {title, author, visibility, coverImg, blogBody} = req.body
+    const date = new Date()
+    const slug = `${title.replace(/\s/g, "-").toLowerCase()}-${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}` 
+
     try {
-        let blog = new Blog({title, author, visibility, coverImg, blogBody})
+        let blog = new Blog({title, slug, author, visibility, coverImg, blogBody})
         blog.save()
         res.json({msg: "saved"})
     } catch (err) {
