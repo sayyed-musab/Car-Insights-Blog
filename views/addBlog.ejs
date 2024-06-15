@@ -25,8 +25,9 @@
                 <div class="form-group">
                     <label for="author">Author</label>
                     <select name="author" id="author">
-                        <option value="Dasteen">Dasteen</option>
-                        <option value="John">John</option>
+                        <% authors.forEach(element => { %>
+                            <option value="<%= element.name %>"><%= element.name%> (<%= element.username %>) </option>
+                        <% }) %>
                     </select> 
                 </div>
                 

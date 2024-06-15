@@ -50,8 +50,9 @@ admin.post('/adminAuth', async(req, res)=>{
     }
 })  
 
-admin.get('/addBlog', (req, res)=>{
-    res.render('addBlog')
+admin.get('/addBlog', async(req, res)=>{
+    let authors = await Admin.find({}, 'name username')
+    res.render('addBlog', {authors})
 })
 
 admin.post('/addBlog', (req, res)=>{
