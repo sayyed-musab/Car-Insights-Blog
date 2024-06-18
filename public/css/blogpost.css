@@ -8,6 +8,7 @@
 #blog>img{
     width: 30vw;
     align-self: center;
+    border-radius: 10px;
 }
 
 #title{
@@ -31,6 +32,18 @@
     margin-top: 0.5em;
 }
 
+#blog-body>p{
+    display: flex;
+    flex-direction: column;
+}
+
+#blog-body>p>img{
+    align-self: center;
+    border-radius: 10px;
+    max-width: 80vw;
+    margin: 0.5em 0;
+}
+
 /* Latest Blog */
 #latest-blogs{
     padding: 1em;
@@ -43,11 +56,12 @@
 
 #latest-blogs-container{
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
 }
 
 .latest-blog{
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -62,6 +76,12 @@
 .latest-blog>img{
     align-self: center;
     height: 20vh;
+    border-radius: 10px;
+}
+
+.latest-blog>.btn{
+    width: fit-content;
+    align-self: flex-end;
 }
 
 .latest-blog-title{

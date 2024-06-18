@@ -15,45 +15,25 @@
     <%- include('navbar', {homeActive: "", blogsActive: "active", aboutActive:" "}) %>
     <main>
         <article id="blog">
-            <div id="title">Classic Revival: Revisiting Iconic Cars Through Modern Reviews</div>
+            <div id="title"><%= blog.title%></div>
             <div id="details">
-                <span>Dasteen</span> | 30 Jan 2024 | 3 Min Read
+                <span><%= blog.author%></span> | <%= blog.date%> | 3 Min Read
             </div>
-            <img src="images/blogs/blog-1.png" alt="Car">
+            <img src="<%= blog.coverImg%>">
             <div id="blog-body">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo ducimus tenetur dolor omnis, vel unde veniam officia. Adipisci laboriosam corporis soluta, saepe sed dolore rerum doloribus cumque? Corrupti assumenda, rem ipsam voluptas ullam corporis ipsum, possimus omnis similique, hic error.</p>
-
-
-                <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti minima, harum suscipit laborum magnam quibusdam.</h3>
-                <h4>
-                    <ul>
-                        <li>Lorem, ipsum.</li>
-                        <li>Lorem ipsum dolor sit amet.</li>
-                        <li>Lorem ipsum dolor, sit amet adipisicing elit.</li>
-                        <li>Lorem ipsum dolor sit amet.</li>
-                    </ul>
-                </h4>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum enim aliquid cum harum tempora nulla. Soluta consequuntur sapiente odit, cumque ipsa quae minus non incidunt iusto consequatur impedit praesentium quam deserunt, illum sunt pariatur. Temporibus voluptates dolores illo veritatis earum?</p>
+                <%- blog.blogBody%>
             </div>
         </article>
         <section id="latest-blogs">
             <h2 id="latest-blogs-heading">Latest Blogs</h2>
             <div id="latest-blogs-container">
-                <article class="latest-blog">
-                    <img src="images/blogs/blog-2.png" alt="Car">
-                    <div class="latest-blog-title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-                    <button class="btn">Read Article</button>
-                </article>
-                <article class="latest-blog">
-                    <img src="images/blogs/blog-3.png" alt="Car">
-                    <div class="latest-blog-title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-                    <button class="btn">Read Article</button>
-                </article>
-                <article class="latest-blog">
-                    <img src="images/blogs/blog-4.png" alt="Car">
-                    <div class="latest-blog-title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-                    <button class="btn">Read Article</button>
-                </article>
+                <% latestBlogs.forEach(element => { %>
+                    <article class="latest-blog">
+                        <img src="<%= element.coverImg%>">
+                        <div class="latest-blog-title"><%= element.title%></div>
+                        <button class="btn btn-link-inside"> <a href="/blogs/<%=element.slug%>"> Read Article </a></button>
+                    </article>
+                <% }) %>
             </div>
         </section>
     </main> 

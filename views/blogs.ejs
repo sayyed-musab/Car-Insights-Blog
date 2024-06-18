@@ -40,102 +40,24 @@
         <section id="blogs">
             <h1 id="blog-heading"> Blogs</h1>
             <div id="blogs-container">
-                <article class="blog">
-                    <div class="left">
-                        <img src="images/blogs/blog-1.png" alt="Old Beetle">
-                    </div>
-                    <div class="right">
-                        <h2 class="title">A Review Of Cars With Advanced Infotainment Systems</h2>
-                        <div class="details-container">
-                            <div class="author-date">By <span>Dasteen</span> | Jan 10, 2024</div>
-                            <div class="read-time">3 Min read</div>
+                <% blogs.forEach(element => { %>
+                    <article class="blog">
+                        <div class="left">
+                            <img src="<%= element.coverImg%>">
                         </div>
-                        <div class="description">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, corrupti harum nostrum consequuntur inventore ex assumenda libero sint, minima accusantium omnis et sit necessitatibus quisquam voluptates dolores officiis facere ratione debitis totam eligendi in mollitia?
+                        <div class="right">
+                            <h2 class="title"><%= element.title%></h2>
+                            <div class="details-container">
+                                <div class="author-date">By <span><%= element.author%></span> | <%= element.date%></div>
+                                <div class="read-time">3 Min read</div>
+                            </div>
+                            <div class="description">
+                                <%-element.blogBody%>...
+                            </div>
+                            <button class="btn btn-link-inside"><a href="/blogs/<%= element.slug%>">Read Article</a></button>
                         </div>
-                        <button class="btn btn-link-inside"><a href="/blogs/blogpost">Read Article</a></button>
-                    </div>
-                </article>
-                <article class="blog">
-                    <div class="left">
-                        <img src="images/blogs/blog-2.png" alt="Old Beetle">
-                    </div>
-                    <div class="right">
-                        <h2 class="title">A Review Of Cars With Advanced Infotainment Systems</h2>
-                        <div class="details-container">
-                            <div class="author-date">By <span>Dasteen</span> | Jan 10, 2024</div>
-                            <div class="read-time">3 Min read</div>
-                        </div>
-                        <div class="description">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, corrupti harum nostrum consequuntur inventore ex assumenda libero sint, minima accusantium omnis et sit necessitatibus quisquam voluptates dolores officiis facere ratione debitis totam eligendi in mollitia?
-                        </div>
-                        <button class="btn btn-link-inside"><a href="/blogs/blogpost">Read Article</a></button>
-                    </div>
-                </article>
-                <article class="blog">
-                    <div class="left">
-                        <img src="images/blogs/blog-3.png" alt="Old Beetle">
-                    </div>
-                    <div class="right">
-                        <h2 class="title">A Review Of Cars With Advanced Infotainment Systems</h2>
-                        <div class="details-container">
-                            <div class="author-date">By <span>Dasteen</span> | Jan 10, 2024</div>
-                            <div class="read-time">3 Min read</div>
-                        </div>
-                        <div class="description">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, corrupti harum nostrum consequuntur inventore ex assumenda libero sint, minima accusantium omnis et sit necessitatibus quisquam voluptates dolores officiis facere ratione debitis totam eligendi in mollitia?
-                        </div>
-                        <button class="btn btn-link-inside"><a href="/blogs/blogpost">Read Article</a></button>
-                    </div>
-                </article>
-                <article class="blog">
-                    <div class="left">
-                        <img src="images/blogs/blog-4.png" alt="Old Beetle">
-                    </div>
-                    <div class="right">
-                        <h2 class="title">A Review Of Cars With Advanced Infotainment Systems</h2>
-                        <div class="details-container">
-                            <div class="author-date">By <span>Dasteen</span> | Jan 10, 2024</div>
-                            <div class="read-time">3 Min read</div>
-                        </div>
-                        <div class="description">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, corrupti harum nostrum consequuntur inventore ex assumenda libero sint, minima accusantium omnis et sit necessitatibus quisquam voluptates dolores officiis facere ratione debitis totam eligendi in mollitia?
-                        </div>
-                        <button class="btn btn-link-inside"><a href="/blogs/blogpost">Read Article</a></button>
-                    </div>
-                </article>
-                <article class="blog">
-                    <div class="left">
-                        <img src="images/blogs/blog-5.png" alt="Old Beetle">
-                    </div>
-                    <div class="right">
-                        <h2 class="title">A Review Of Cars With Advanced Infotainment Systems</h2>
-                        <div class="details-container">
-                            <div class="author-date">By <span>Dasteen</span> | Jan 10, 2024</div>
-                            <div class="read-time">3 Min read</div>
-                        </div>
-                        <div class="description">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, corrupti harum nostrum consequuntur inventore ex assumenda libero sint, minima accusantium omnis et sit necessitatibus quisquam voluptates dolores officiis facere ratione debitis totam eligendi in mollitia?
-                        </div>
-                        <button class="btn btn-link-inside"><a href="/blogs/blogpost">Read Article</a></button>
-                    </div>
-                </article>
-                <article class="blog">
-                    <div class="left">
-                        <img src="images/blogs/blog-6.png" alt="Old Beetle">
-                    </div>
-                    <div class="right">
-                        <h2 class="title">A Review Of Cars With Advanced Infotainment Systems</h2>
-                        <div class="details-container">
-                            <div class="author-date">By <span>Dasteen</span> | Jan 10, 2024</div>
-                            <div class="read-time">3 Min read</div>
-                        </div>
-                        <div class="description">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, corrupti harum nostrum consequuntur inventore ex assumenda libero sint, minima accusantium omnis et sit necessitatibus quisquam voluptates dolores officiis facere ratione debitis totam eligendi in mollitia?
-                        </div>
-                        <button class="btn btn-link-inside"><a href="/blogs/blogpost">Read Article</a></button>
-                    </div>
-                </article>
+                    </article>     
+                <% }) %>
             </div>
         </section>
     </main>

@@ -36,34 +36,24 @@
             <div id="latest-blog-container">
                 <div class="heading">Latest</div>
                 <article class="blog-container">
-                    <img src="images/latest-blog-img.png" alt="Yellow Beetle">
-                    <div class="details-container"> By <span>John Doe</span> | May 15, 2024</div>
-                    <div class="title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores sunt assumenda eum!</div>
-                    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos quas dolore, quam, vitae non labore quaerat et quisquam atque aspernatur delectus officia impedit, illo necessitatibus error adipisci? Possimus minus at non dolorem atque iure temporibus rem expedita earum qui similique cum vero ad obcaecati iusto illum ipsam, consequatur exercitationem assumenda?</div>
-                    <button class="btn btn-link-inside"><a href="/blogpost">Read More</a></button>
+                    <img src="<%=latestBlog.coverImg%>">
+                    <div class="details-container"> By <span><%=latestBlog.author%></span> | <%=latestBlog.date%></div>
+                    <div class="title"><%=latestBlog.title%></div>
+                    <div class="description"><%-latestBlog.blogBody%>...</div>
+                    <button class="btn btn-link-inside"><a href="/blogs/<%=latestBlog.slug%>">Read More</a></button>
                 </article>
             </div>
             <div id="popular-blogs-container">
                 <div class="heading">Popular Blogs</div>
                 <div class="blog-container">
-                    <article class="popular-blog">
-                        <a href="/">
-                            <div class="details-container"> By <span>John Doe</span> | March 24, 2024</div>
-                            <div class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-                        </a>
-                    </article>
-                    <article class="popular-blog">
-                        <a href="/">
-                            <div class="details-container"> By <span>John Doe</span> | March 24, 2024</div>
-                            <div class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-                        </a>
-                    </article>
-                    <article class="popular-blog">
-                        <a href="/">
-                            <div class="details-container"> By <span>John Doe</span> | March 24, 2024</div>
-                            <div class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-                        </a>
-                    </article>
+                    <% popularBlogs.forEach(element => { %>
+                        <article class="popular-blog">
+                            <a href="blogs/<%= element.slug%>">
+                                <div class="details-container"> By <span><%= element.author%></span> | <%= element.date%></div>
+                                <div class="title"><%= element.title%>.</div>
+                            </a>
+                        </article>
+                    <% }) %>
                 </div>
             </div>
         </section>
@@ -135,8 +125,5 @@
 <script src="js/hamburger.js"></script>
 <script src="js/testimonial-slider.js"></script>
 <script>
-    // setInterval(() => {
-    //     document.location = '/'
-    // }, 1000);
 </script>
 </html>

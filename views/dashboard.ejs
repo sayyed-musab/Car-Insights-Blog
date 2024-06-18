@@ -37,66 +37,26 @@
             </div>
         </section>
         <section id="blogs">
-            <div class="blog public">
-                <div class="blog-left">
-                    <img src="images/blogs/blog-1.png" alt="Old Beetle">
-                </div>
-                <div class="blog-right">
-                    <h2 class="title">A Review Of Cars With Advanced Infotainment Systems</h2>
-                    <div class="details-container">
-                        <div class="author-date">By <span>Dasteen</span> | Jan 10, 2024</div>
-                        <div class="read-time">3 Min read</div>
+            <% blogs.forEach(element => { %>
+                <div class="blog <%- element.visibility%>">
+                    <div class="blog-left">
+                        <img src="<%= element.coverImg%>" alt="Old Beetle">
                     </div>
-                    <div class="description">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, corrupti harum nostrum consequuntur inventore ex assumenda libero sint, minima accusantium omnis et sit necessitatibus quisquam voluptates dolores officiis facere ratione debitis totam eligendi in mollitia?
-                    </div>
-                    <div class="btn-container">
-                        <button class="btn btn-link-inside"><a href="/blogpost" target="_blank">View</a></button>
-                        <button class="btn">Edit</button>
-                        <button class="btn deleteBtn">Delete</button>
-                    </div>
-                </div>
-            </div>
-            <div class="blog private">
-                <div class="blog-left">
-                    <img src="images/blogs/blog-2.png" alt="Driving BMW">
-                </div>
-                <div class="blog-right">
-                    <h2 class="title">Behind the Wheel: Exploring the Evolution of Autonomous Driving</h2>
-                    <div class="details-container">
-                        <div class="author-date">By <span>Dasteen</span> | Dec 24, 2023</div>
-                        <div class="read-time">3 Min read</div>
-                    </div>
-                    <div class="description">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, corrupti harum nostrum consequuntur inventore ex assumenda libero sint, minima accusantium omnis et sit necessitatibus quisquam voluptates dolores officiis facere ratione debitis totam eligendi in mollitia?
-                    </div>
-                    <div class="btn-container">
-                        <button class="btn btn-link-inside"><a href="/blogpost" target="_blank">View</a></button>
-                        <button class="btn">Edit</button>
-                        <button class="btn deleteBtn">Delete</button>
+                    <div class="blog-right">
+                        <h2 class="title">A Review Of Cars With Advanced Infotainment Systems</h2>
+                        <div class="details-container">
+                            <div class="author-date">By <span><%= element.author%></span> | <%= element.date%></div>
+                            <div class="read-time">3 Min read</div>
+                        </div>
+                        <div class="description"><%- element.blogBody%>...</div>
+                        <div class="btn-container">
+                            <button class="btn btn-link-inside"><a href="/blogs/<%= element.slug%>" target="_blank">View</a></button>
+                            <button class="btn">Edit</button>
+                            <button class="btn deleteBtn">Delete</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="blog public">
-                <div class="blog-left">
-                    <img src="images/blogs/blog-3.png" alt="Shelby GT">
-                </div>
-                <div class="blog-right">
-                    <h2 class="title">From Classic to Cutting-Edge: A Journey Through Iconic Car Designs</h2>
-                    <div class="details-container">
-                        <div class="author-date">By <span>Dasteen</span> | Nov 15, 2023</div>
-                        <div class="read-time">3 Min read</div>
-                    </div>
-                    <div class="description">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, corrupti harum nostrum consequuntur inventore ex assumenda libero sint, minima accusantium omnis et sit necessitatibus quisquam voluptates dolores officiis facere ratione debitis totam eligendi in mollitia?
-                    </div>
-                    <div class="btn-container">
-                        <button class="btn btn-link-inside"><a href="/blogpost" target="_blank">View</a></button>
-                        <button class="btn">Edit</button>
-                        <button class="btn deleteBtn">Delete</button>
-                    </div>
-                </div>
-            </div>
+            <% }) %>
         </section>
     </main>
 </body>

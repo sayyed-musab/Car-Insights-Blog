@@ -9,8 +9,12 @@ const admin = express.Router()
 admin.use(express.static('public'))
 admin.use(express.json({limit: '10mb'}))
 
-admin.get('/', (req, res)=>{
-    res.render('dashboard') 
+admin.get('/', async(req, res)=>{
+    const blogs = await Blog.find().sort({_id: -1 })
+    blogs.forEach(e=>{
+        e.blogBody = e.blogBody.split("").slice(0, 200).join("")      
+    })
+    res.render('dashboard', {blogs}) 
 })
 
 admin.get('/login', (req, res)=>{
