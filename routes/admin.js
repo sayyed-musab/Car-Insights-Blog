@@ -59,17 +59,23 @@ admin.get('/addBlog', async(req, res)=>{
     res.render('addBlog', {authors})
 })
 
-admin.post('/addBlog', (req, res)=>{
-    let {title, author, visibility, coverImg, blogBody} = req.body
-    const date = new Date()
-    const slug = `${title.replace(/\s/g, "-").toLowerCase()}-${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}` 
-
-    try {
-        let blog = new Blog({title, slug, author, visibility, coverImg, blogBody})
-        blog.save()
-        res.json({msg: "saved"})
-    } catch (err) {
-        res.json({err})
+admin.post('/addBlog', async(req, res)=>{
+    let {authToken, title, author, visibility, coverImg, blogBody} = req.body
+    let adminID = jwt.verify(authToken, process.env.JWT_PRIVATE_KEY)
+    let admin = await Admin.findOne({_id:adminID.id})
+    if(!admin){
+        res.json({err: 'Admin Not Found'})
+    }
+    else{
+        const date = new Date()
+        const slug = `${title.replace(/\s/g, "-").toLowerCase()}-${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}` 
+        try {
+            let blog = new Blog({title, slug, author, visibility, coverImg, blogBody})
+            blog.save()
+            res.json({msg: "saved"})
+        } catch (err) {
+            res.json({err})
+        }
     }
 })
 

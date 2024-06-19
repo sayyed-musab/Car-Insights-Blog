@@ -1,4 +1,5 @@
 if (!localStorage.getItem('auth')) {
+    document.body.style.visibility = "hidden"
     location.href = "/admin/login"
 }else {
         makeRequest()
