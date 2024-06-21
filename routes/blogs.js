@@ -20,7 +20,7 @@ blogs.get('/:slug', async(req, res)=>{
         res.render('blogpost', {blog, latestBlogs})
     }
     catch(e){
-        console.log(e)
+        res.render('404')
     }
 })
 

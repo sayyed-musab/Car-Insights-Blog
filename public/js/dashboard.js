@@ -2,7 +2,7 @@ const blogs = document.getElementById('blogs')
 const filter = document.getElementById('filter')
 const sort = document.getElementById('sort')
 const search = document.getElementById('search')
-const deleteBtn = document.getElementsByClassName('deleteBtn')
+const blogDeleteButtons = document.querySelectorAll('.delete-btn');
 
 // Filter
 filter.value = "-"
@@ -55,10 +55,26 @@ search.addEventListener('input', ()=>{
     }
 })
 
-// Delete Button Alert
-Array.from(deleteBtn).forEach(e=> {
-    e.addEventListener('click', (e)=>{
-        let confirmation = confirm('Do you really want to delete the blog? This action cant be reversed')
-        console.log(confirmation)
+// Delete Blog
+blogDeleteButtons.forEach(button => {
+    button.addEventListener('click', async(e) => {
+        let confirmation = confirm("Are you sure you want to delete this blog?") 
+        if(confirmation){
+            const response = await fetch("http://localhost:3000/admin/deleteBlog", {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ authToken: localStorage.getItem('auth'), blogId: e.target.id.split("-")[1] })
+            })
+    
+            const res = await response.json()
+            if(res.msg){
+                location.reload()
+            }
+            else{
+                alert(res.err)
+            }
+        }
     })
 })

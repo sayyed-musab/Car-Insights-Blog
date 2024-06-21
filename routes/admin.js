@@ -79,4 +79,21 @@ admin.post('/addBlog', async(req, res)=>{
     }
 })
 
+admin.delete('/deleteBlog', async(req, res)=>{
+    try{
+        let adminID = jwt.verify(req.body.authToken, process.env.JWT_PRIVATE_KEY)
+        let admin = await Admin.findOne({_id:adminID.id})
+        if(admin){
+            await Blog.findByIdAndDelete(req.body.blogId)
+            res.json({msg: "Blog Deleted!"})
+        }
+        else{
+            res.json({err: "Can't delete blog"})
+        }
+    }
+    catch(err){
+        res.json({err})
+    }
+})
+
 export default admin
