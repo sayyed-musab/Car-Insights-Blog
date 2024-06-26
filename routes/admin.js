@@ -96,4 +96,63 @@ admin.delete('/deleteBlog', async(req, res)=>{
     }
 })
 
+admin.get('/editBlog', async(req, res)=>{
+    let authors = await Admin.find({}, 'name username')
+    res.render('addBlog', {authors})
+})
+
+admin.post('/editBlog/data', async(req, res)=>{
+try{
+    let adminID = jwt.verify(req.body.authToken, process.env.JWT_PRIVATE_KEY)
+    let admin = await Admin.findOne({_id:adminID.id})
+    if (!admin) {
+        return res.status(401).json({ error: 'Unauthorized' })
+    }
+
+    const blog = await Blog.findById(req.body.blogId)
+    if (!blog) {
+        return res.status(404).json({ error: 'Blog not found' })
+    }
+
+    res.json({ blog })
+} catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal Server Error' });
+}
+})
+
+admin.post('/updateBlog', async(req, res)=>{
+    const { authToken, blogId, title, author, visibility, coverImg, blogBody } = req.body;
+
+    try {
+        // Verify admin token
+        const adminID = jwt.verify(authToken, process.env.JWT_PRIVATE_KEY);
+        const admin = await Admin.findOne({ _id: adminID.id });
+
+        if (!admin) {
+            return res.status(401).json({ error: 'Unauthorized' });
+        }
+
+        // Check if blog exists
+        const existingBlog = await Blog.findById(blogId);
+        if (!existingBlog) {
+            return res.status(404).json({ error: 'Blog not found' });
+        }
+
+        // Generate slug
+        const date = new Date();
+        const slug = `${title.replace(/\s/g, "-").toLowerCase()}-${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+
+        // Update blog
+        const updatedBlog = await Blog.findByIdAndUpdate(blogId, { title, author, visibility, coverImg, blogBody }, { new: true });
+        if (!updatedBlog) {
+            return res.status(404).json({ error: 'Blog not found' });
+        }
+        res.json({ msg: 'saved' });
+    } catch (err) {
+        console.error('Error updating blog:', err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+})
+
 export default admin

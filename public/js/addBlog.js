@@ -1,6 +1,12 @@
+const title = document.getElementById('title')
+const author = document.getElementById('author')
+const visibility = document.getElementById('visibility')
+const coverImg = document.getElementById('coverImg')
+const addBlogSubmitBtn = document.getElementById('addBlog-submit-btn')
 const coverImgInput = document.getElementById('coverImg')
 const imagePreview = document.getElementById('previewImage');
 coverImgInput.value = ""
+ 
 
 if(coverImgInput.value == ""){
     imagePreview.style.display = "none"
@@ -46,14 +52,9 @@ const quill = new Quill('#editor', {
 })
 
 // Send Blog to Backend
-const title = document.getElementById('title')
-const author = document.getElementById('author')
-const visibility = document.getElementById('visibility')
-const coverImg = document.getElementById('coverImg')
-const addBlogSubmitBtn = document.getElementById('addBlog-submit-btn')
 
 function checkConditions() {
-    if (title.value.length < 5 || author.value.trim() === "" || visibility.value.trim() === "" || coverImg.value.trim() === "") {
+    if (title.value.length < 5 || author.value.trim() === "" || visibility.value.trim() === "") {
         addBlogSubmitBtn.disabled = true;
     } else {
         addBlogSubmitBtn.disabled = false;
@@ -71,40 +72,115 @@ checkConditions();
 
 let queryImage;
 setImagePath = () => {
-    let reader = new FileReader() 
-    reader.readAsDataURL(coverImg.files[0])
-    reader.onload = () => {      
-        queryImage =  reader.result      
+    try{
+        let reader = new FileReader() 
+        reader.readAsDataURL(coverImg.files[0])
+        reader.onload = () => {      
+            queryImage =  reader.result      
+        }
+    }
+    catch(e){
+        queryImage = imagePreview.src
     }
 }
 
-addBlogSubmitBtn.addEventListener('click', async(e)=>{
-    e.preventDefault()
-    setImagePath()
-    if(queryImage != undefined){
-        let response = await fetch('http://localhost:3000/admin/addBlog', {
-            method: "POST", 
-            headers:{
+if (!location.search.split("=")[0].split("?")[1] === "blog"){
+    addBlogSubmitBtn.addEventListener('click', async(e)=>{
+        e.preventDefault()
+        setImagePath()
+        if(queryImage != undefined){
+            let response = await fetch('http://localhost:3000/admin/addBlog', {
+                method: "POST", 
+                headers:{
+                    "content-type": "application/json"
+                },
+                body:JSON.stringify({
+                    authToken: localStorage.getItem('auth'),
+                    title: title.value,
+                    author: author.value,
+                    visibility: visibility.value,
+                    coverImg: queryImage,
+                    blogBody: quill.root.innerHTML
+                })
+            })
+
+            let res = await response.json()
+            if(res.err){
+                document.getElementById('err').innerText = res
+            }
+            else if(res.msg == "saved"){
+                location = "/admin"
+            }
+        }
+    })
+}
+
+// Edit Blog
+const getBlogData = async () => {
+    try {
+        let response = await fetch('http://localhost:3000/admin/editBlog/data', {
+            method: "POST",
+            headers: {
                 "content-type": "application/json"
             },
-            body:JSON.stringify({
+            body: JSON.stringify({
                 authToken: localStorage.getItem('auth'),
-                title: title.value,
-                author: author.value,
-                visibility: visibility.value,
-                coverImg: queryImage,
-                blogBody: quill.root.innerHTML
+                blogId: location.search.split("=")[1]
             })
         })
 
+        if (!response.ok) {
+            location.href = "/"
+        }
+
         let res = await response.json()
-        if(res.err){
-            document.getElementById('err').innerText = res
-        }
-        else if(res.msg == "saved"){
-            location = "/admin"
-        }
+        addBlogSubmitBtn.value = "Update Blog"
+        setBlogData(res.blog)
+        
+    } catch (error) {
+        console.error('Error fetching data:', error)
     }
-})
+}
 
+    // Update Edited Blog
+if (location.search.split("=")[0].split("?")[1] === "blog") {
+    getBlogData()
+    addBlogSubmitBtn.addEventListener('click', async(e)=>{
+        e.preventDefault()
+        setImagePath()
+        if(queryImage != undefined){
+            let response = await fetch('http://localhost:3000/admin/updateBlog', {
+                method: "POST", 
+                headers:{
+                    "content-type": "application/json"
+                },
+                body:JSON.stringify({
+                    authToken: localStorage.getItem('auth'),
+                    blogId: location.search.split("=")[1],
+                    title: title.value,
+                    author: author.value,
+                    visibility: visibility.value,
+                    coverImg: queryImage,
+                    blogBody: quill.root.innerHTML
+                })
+            })
+    
+            let res = await response.json()
+            if(res.err){
+                document.getElementById('err').innerText = res
+            }
+            else if(res.msg == "saved"){
+                location = "/admin"
+            }
+        }
+    })    
+}
 
+const setBlogData = (blog)=>{
+    title.value = blog.title
+    author.value = blog.author
+    visibility.value = blog.visibility    
+    imagePreview.src = blog.coverImg
+    imagePreview.style.display = "block"
+    quill.root.innerHTML = blog.blogBody
+}

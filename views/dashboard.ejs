@@ -51,7 +51,7 @@
                         <div class="description"><%- element.blogBody%>...</div>
                         <div class="btn-container">
                             <button class="btn btn-link-inside"><a href="/blogs/<%= element.slug%>" target="_blank">View</a></button>
-                            <button class="btn">Edit</button>
+                            <button class="btn btn-link-inside" id="edit-<%= element.id%>"><a href="/admin/editBlog?blog=<%= element.id%>">Edit</a></button>
                             <button class="btn delete-btn" id="delete-<%= element.id%>">Delete</button>
                         </div>
                     </div>
