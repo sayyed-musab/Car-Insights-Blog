@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "app": "nodemon --env-file=.env index.js",
+    "app": "node --env-file=.env index.js",
     "admin": "node --env-file=.env manageAdmin.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
